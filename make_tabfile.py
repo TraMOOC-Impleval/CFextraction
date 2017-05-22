@@ -15,6 +15,10 @@ filename = 'DE.json'
 OUTFILENAME = 'DE_out.tab'
 
 
+badworkers = BadWorkers()
+badworkers.update_from_workerfile('/home/hdevos/TRAMOOC/crowdflowerdata/crowdflowerprocessor/cz-workset987586.csv')
+badworkers.read_from_files('untrusted.txt', 'flagged.txt')
+
 
 # Get the location of the file
 totfilename = PATH + filename
@@ -26,6 +30,7 @@ dingen = jsonloader.read_json2list(totfilename, returntype='json')  # <-- sorry 
 # Initialize list of jsons
 clean_jsons = []
 
+thetime = str(time.time())
 
 sucesses = 0 # <-- counts nr of successful parses
 for ding in dingen:   # <-- sorry for the bad naming
@@ -33,7 +38,7 @@ for ding in dingen:   # <-- sorry for the bad naming
     single_json = ding
 
     # Initialise the sentence info getter
-    x = SentenceInfoGetter(single_json)
+    x = SentenceInfoGetter(single_json, badworkers, thetime)
 
 
     x.extract_info()
