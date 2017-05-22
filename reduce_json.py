@@ -6,19 +6,12 @@ from JsonLoader import JSONLoader
 from JSON2tab import JSON2tab
 from flaggedWorkers import BadWorkers
 import time
-from SentenceInfoGetter_withFlaggedFilter import SentenceInfoGetter as SIG
+from SentenceInfoGetter import SentenceInfoGetter as SIG
 import sys
 # Path to the folder where the results are located
 PATH = '/home/hdevos/TRAMOOC/crowdflowerdata/crowdflowerprocessor/'
 JSONFILE = 'CZ_json.zip'
 OUTFILENAME = 'CZ_out_filtertest.json'
-
-
-
-badworkers = BadWorkers()
-badworkers.update_from_workerfile('/home/hdevos/TRAMOOC/crowdflowerdata/crowdflowerprocessor/cz-workset987586.csv')
-badworkers.read_from_files('untrusted.txt', 'flagged.txt')
-
 
 # Name of the file with the results (may be a json or a zip)
 if len(sys.argv) >=3:
@@ -26,6 +19,13 @@ if len(sys.argv) >=3:
     OUTFILENAME = sys.argv[2] #'CZ_out_filtertest.json'
 else:
     filename = JSONFILE
+
+badworkers = BadWorkers()
+badworkers.update_from_workerfile('/home/hdevos/TRAMOOC/crowdflowerdata/crowdflowerprocessor/cz-workset987586.csv')
+badworkers.read_from_files('untrusted.txt', 'flagged.txt')
+
+
+
 
 # Get the location of the file
 totfilename = PATH + filename
