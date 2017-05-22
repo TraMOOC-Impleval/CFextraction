@@ -10,9 +10,8 @@ import sys
 PATH = '/home/hdevos/TRAMOOC/crowdflowerdata/crowdflowerprocessor/'
 
 # Name of the file with the results (may be a json or a zip)
-filename = sys.argv[1]
-
-OUTFILENAME = filename.split('.')[0] + '_reduced.tab'
+totfilename = sys.argv[1]
+outfilename = filename.split('.')[0] + '.prep.tab'
 
 
 badworkers = BadWorkers()
@@ -21,19 +20,19 @@ badworkers.read_from_files('untrusted.txt', 'flagged.txt')
 
 
 # Get the location of the file
-totfilename = filename
+
 
 # Make a jsonloaderobject and read the jsons
 jsonloader = JSONLoader()
-jsonlines = jsonloader.read_json2list(totfilename, returntype='json')  # <-- sorry for the bad variable name
+jsonlines = jsonloader.read_json2list(totfilename, returntype='json')  
 
 # Initialize list of jsons
 clean_jsons = []
 
-thetime = str(time.time())
+thetime = str(time.time())   # creates a timestamp in order to make a unique file of removed items
 
 sucesses = 0 # <-- counts nr of successful parses
-for jsonline in jsonlines:   # <-- sorry for the bad naming
+for jsonline in jsonlines:   #
 
     single_json = jsonline
 
@@ -52,4 +51,4 @@ for jsonline in jsonlines:   # <-- sorry for the bad naming
 print('sucesses: ', sucesses)
 
 filemaker = JSON2tab(clean_jsons)
-filemaker.make_tabfile(outfilename=OUTFILENAME)
+filemaker.make_tabfile(outfilename)
