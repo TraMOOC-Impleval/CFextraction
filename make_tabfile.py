@@ -21,7 +21,7 @@ badworkers.read_from_files('untrusted.txt', 'flagged.txt')
 
 
 # Get the location of the file
-totfilename = PATH + filename
+totfilename = filename
 
 # Make a jsonloaderobject and read the jsons
 jsonloader = JSONLoader()
