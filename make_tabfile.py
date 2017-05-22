@@ -25,7 +25,7 @@ totfilename = PATH + filename
 
 # Make a jsonloaderobject and read the jsons
 jsonloader = JSONLoader()
-dingen = jsonloader.read_json2list(totfilename, returntype='json')  # <-- sorry for the bad variable name
+jsonlines = jsonloader.read_json2list(totfilename, returntype='json')  # <-- sorry for the bad variable name
 
 # Initialize list of jsons
 clean_jsons = []
@@ -33,9 +33,9 @@ clean_jsons = []
 thetime = str(time.time())
 
 sucesses = 0 # <-- counts nr of successful parses
-for ding in dingen:   # <-- sorry for the bad naming
+for jsonline in jsonlines:   # <-- sorry for the bad naming
 
-    single_json = ding
+    single_json = jsonline
 
     # Initialise the sentence info getter
     x = SentenceInfoGetter(single_json, badworkers, thetime)
