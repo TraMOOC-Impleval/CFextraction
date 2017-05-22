@@ -12,7 +12,7 @@ PATH = '/home/hdevos/TRAMOOC/crowdflowerdata/crowdflowerprocessor/'
 # Name of the file with the results (may be a json or a zip)
 filename = sys.argv[1]
 
-OUTFILENAME = filename.split('.')[0] + 'reduced.tab'
+OUTFILENAME = filename.split('.')[0] + '_reduced.tab'
 
 
 badworkers = BadWorkers()
