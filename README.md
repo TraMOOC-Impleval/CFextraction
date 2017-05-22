@@ -44,7 +44,7 @@ The file with json can either be a zip containing the json or the json-file itse
 
 A list with json-dictionaries is returned. Every item in the list is 1 line from the inputfile.
 
-<b>SentenceInfoGetter.py<\b>
+<b>SentenceInfoGetter.py</b>
 
 Usage:
 initialize
@@ -72,7 +72,7 @@ json_type  (default = 'str'): other option : 'dict'. determines whether to retur
 
 
 
-<b>JSON2Tab.py<\b>
+<b>JSON2Tab.py</b>
 
 Usage:
 Innitialize 
