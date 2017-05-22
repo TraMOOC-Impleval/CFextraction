@@ -1,6 +1,6 @@
 # CFextraction
 
-<b>update badworkerfile<\b>
+<b>update badworkerfile</b>
 A small command line application to build files contianing the id's untrusted and flagged users.
 
 Use it like python update_badworkerfile arg1 arg2 arg3
