@@ -9,26 +9,13 @@ import time
 from SentenceInfoGetter import SentenceInfoGetter as SIG
 import sys
 # Path to the folder where the results are located
-PATH = '/home/hdevos/TRAMOOC/crowdflowerdata/crowdflowerprocessor/'
-JSONFILE = 'CZ_json.zip'
-OUTFILENAME = 'CZ_out_filtertest.json'
 
-# Name of the file with the results (may be a json or a zip)
-if len(sys.argv) >=3:
-    filename = sys.argv[1]#'
-    OUTFILENAME = sys.argv[2] #'CZ_out_filtertest.json'
-else:
-    filename = JSONFILE
+totfilename = sys.argv[1]#'
+outfilename = totfilename.split('.')[0] + '.prep.json'
 
 badworkers = BadWorkers()
 badworkers.update_from_workerfile('/home/hdevos/TRAMOOC/crowdflowerdata/crowdflowerprocessor/cz-workset987586.csv')
 badworkers.read_from_files('untrusted.txt', 'flagged.txt')
-
-
-
-
-# Get the location of the file
-totfilename = PATH + filename
 
 # Make a jsonloaderobject and read the jsons
 jsonloader = JSONLoader()
@@ -59,6 +46,6 @@ for ding in dingen:   # <-- sorry for the bad naming
 
 print('sucesses: ', sucesses)
 
-with open(OUTFILENAME, 'w') as out:
+with open(outfilename, 'w') as out:
     for json in clean_jsons:
         out.write('{}\n'.format(json))
