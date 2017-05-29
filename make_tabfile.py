@@ -13,9 +13,10 @@ PATH = '/home/hdevos/TRAMOOC/crowdflowerdata/crowdflowerprocessor/'
 totfilename = sys.argv[1]
 outfilename = filename.split('.')[0] + '.prep.tab'
 
+worksetfile = sys.argv[2]
 
 badworkers = BadWorkers()
-badworkers.update_from_workerfile('/home/hdevos/TRAMOOC/crowdflowerdata/crowdflowerprocessor/cz-workset987586.csv')
+badworkers.update_from_workerfile(worksetfile)
 badworkers.read_from_files('untrusted.txt', 'flagged.txt')
 
 
