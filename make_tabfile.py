@@ -5,13 +5,16 @@ from SentenceInfoGetter import SentenceInfoGetter
 from JsonLoader import JSONLoader
 from JSON2tab import JSON2tab
 import sys
+from flaggedWorkers import *
+import time
 
 # Path to the folder where the results are located
 PATH = '/home/hdevos/TRAMOOC/crowdflowerdata/crowdflowerprocessor/'
 
 # Name of the file with the results (may be a json or a zip)
 totfilename = sys.argv[1]
-outfilename = filename.split('.')[0] + '.prep.tab'
+bare = totfilename.split('.')[0].split('/')[-1]
+outfilename = totfilename.split('.')[0] + '.prep.tab'
 
 worksetfile = sys.argv[2]
 
@@ -38,7 +41,7 @@ for jsonline in jsonlines:   #
     single_json = jsonline
 
     # Initialise the sentence info getter
-    x = SentenceInfoGetter(single_json, badworkers, thetime)
+    x = SentenceInfoGetter(single_json, badworkers, bare)
 
 
     x.extract_info()
